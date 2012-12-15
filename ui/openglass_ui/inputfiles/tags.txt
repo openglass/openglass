@@ -1,0 +1,5 @@
+2
+9
+ID	Protocol	Tag	Description	Length	Type	Value
+101	ARCA	tag1	This is first tag	100	binary	111	101
+102	ARCADIRECT	tag2	This is second tag	200	binary	222	102

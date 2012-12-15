@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/deletered.png</file>
+        <file>images/package_editors.ico</file>
+        <file>images/edit_add.ico</file>
+    </qresource>
+</RCC>

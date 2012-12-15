@@ -1,0 +1,5 @@
+2
+7
+ID	Protocol	Message	Description
+101	ARCA	message1	this is first message	111
+102	ARCADIRECT	message1	this is second message	222
