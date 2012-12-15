@@ -1,0 +1,26 @@
+
+
+test_case
+test_case_msg_tags
+• test case, 
+• test_case_message ids, 
+• protocol_msg_tags_id
+• USER ENTERED VALUES the actual values entered for every protocol_msg_tags_id can be obtained from this table. 
+• This coupled with protocol_msg_tags and protocol_all_tags will provide all tag informatoin for anhy single message in the testcase. 
+
+test_case_msgs_id  - 
+testcaseid, 
+entity id (protocol connection configuration), 
+protocol_id (protocol type of that message), 
+protocol_msg_id (message type within  a protocol)
+
+protocol_msg_tags_id - contains mapping between
+protocol_msg_id 
+protocoal_all_tags_id 
+• provides offset within the message, default value, possible_values and sequence # (probably redundant)
+• We would probably use the protocol_all_tags_id from this table to get to real information about tags
+protocol_all_tags_di 
+• provides length of the tag
+• provides destination type of the tag
+• provides justify rules 
+• provides tag_type i.e. header, body or trailer

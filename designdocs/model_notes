@@ -1,0 +1,77 @@
+Some general notes on app behaviour:
+
+Assumptions:
+one test case at one time. All test cases run sequentially.
+
+Behaviour:
+
+Each test case has a list of messages. 
+Each test case also has a sending behaviour and a receiving behaviour.
+(More on this later)
+Each test case has an update behaviour and a runtime behaviour
+UpdateBehaviour:
+1. Test case created
+2. Message getting created
+2a. Message is made up of a sequenced collection of Tags
+2c. Message meta information (Message will have some db interaction) along with tag information (interaction with db) gets saved to database.  Whether all of them gets saved at this time or once when we have all the information required from a test case is debatable. But it makes sense to save it as we go on or as the user saves it.
+
+3a. Event gets created (need to think more on events)
+3b. Event gets saved. 
+
+4. TestCaseConfig will configure protocol connections
+4a. Will setup connection configuration for each protocol type
+4b. The protocol connection configuration gets saved in some table with all of
+its related information.
+
+5. Test case gets saved with all above information.
+Test case will have its counterpart db interaction which will save all messageid
+etc back to db along with some of its own information too. 
+
+Runtime Behaviour:
+1. Open TestCase
+1a. Will get test case configuration to configure and create the
+senders/receivers protocol connections.
+1b.Test case will go to db, create the messages using Tags. Message would probably just be a buffer which needs to be passed along to the sending / receiving
+subsystem. This can be done though memory pool  of pre defined max size of
+message. (Need to check if this can be wasteful)
+1c. Interface to run the test case will basically decode all messages adn queue
+them up to be Sender / Receiver subsystem. 
+
+? - does the messages need to asynchronous or synchronous - maybe both !!!
+
+sending -> read messages -> create messages -> each message has a protocol
+associated with it. Each protocol has  an connection associated with it. Based on this connection configuration, it will be able to send | receive to | from certain network protocols. This connection will be configured by the test case configuration
+
+2. Sending / Receiving and message
+3. Comparison of these messages
+4. Report generation
+
+Need to have interface as part of the sending / receiving protocol information.
+Since for mcast its required
+
+receiving / sending would be something like a thread for each protocol atleast
+on receiving side since it has asynchronous. The receiving behaviour will be
+interesting since 
+
+T - custom - not sure how to handle "BytePair" (sseriously!!!!)
+b - int8_t - aka byte
+B - uint8_t
+h - int16_t
+H - uint16_t
+i - int32_t
+u - uint32_t
+I - int64_t
+U - uint64_t
+c - char          // int8_t
+C - unsigned char // uint8_t
+s - string
+f - float
+d - double
+
+If its custom - T then ideally it should have some sort of rules which can be
+used to create it in another table or something
+
+Discussions about unique identifiers in a message and rules to create them ona
+protocol basis
+
+Discussion about receiving messages and storing / comparing results

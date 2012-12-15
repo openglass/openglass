@@ -1,0 +1,87 @@
+Some general notes on app behaviour:
+
+Assumptions:
+one test case at one time. All test cases run sequentially.
+
+Behaviour:
+
+Each test case has a list of messages. 
+Each test case also has a sending behaviour and a receiving behaviour.
+(More on this later)
+Each test case has an update behaviour and a runtime behaviour
+UpdateBehaviour:
+1. Test case created
+2. Message getting created
+2a. Message is made up of a sequenced collection of Tags
+2c. Message meta information (Message will have some db interaction) along with tag information (interaction with db) gets saved to database.  Whether all of them gets saved at this time or once when we have all the information required from a test case is debatable. But it makes sense to save it as we go on or as the user saves it.
+
+3a. Event gets created (need to think more on events)
+3b. Event gets saved. 
+
+4. TestCaseConfig will configure protocol connections
+4a. Will setup connection configuration for each protocol type
+4b. The protocol connection configuration gets saved in some table with all of
+its related information.
+
+5. Test case gets saved with all above information.
+Test case will have its counterpart db interaction which will save all messageid
+etc back to db along with some of its own information too. 
+
+Runtime Behaviour:
+1. Open TestCase
+1a. Will get test case configuration to configure and create the
+senders/receivers protocol connections.
+1b.Test case will go to db, create the messages using Tags. Message would probably just be a buffer which needs to be passed along to the sending / receiving
+subsystem. This can be done though memory pool  of pre defined max size of
+message. (Need to check if this can be wasteful)
+1c. Interface to run the test case will basically decode all messages adn queue
+them up to be Sender / Receiver subsystem. 
+
+? - does the messages need to asynchronous or synchronous - maybe both !!!
+
+sending -> read messages -> create messages -> each message has a protocol
+associated with it. Each protocol has  an connection associated with it. Based on this connection configuration, it will be able to send | receive to | from certain network protocols. This connection will be configured by the test case configuration
+
+2. Sending / Receiving and message
+3. Comparison of these messages
+4. Report generation
+
+Model-> Db interface:
+
+model->db interface
+
+select test_case_msgs_id, entity_id, protocol_id, protocol_msg_id from dbo.test_case_msgs where test_case_id=1 and status=1;
+// will provide me with the message of a test case and information about it to create the memory model of the message.
+
+entity_id and maybe protocol_id too can stay with the test_case
+We will create a datastrucutre called MsgInfo from test_Case_ms _id, protocol_msg_id (do we really need this) from the above statement to get all the tags in each message_id using the below mentioned sql. 
+
+select protocol_msg_tag_id, value_user from dbo.test_case_msg_tags where test_case_msg_id=1;
+
+This will provide the value and also the protocol_msg_tag_id;
+
+
+test_case
+test_case_msg_tags
+• test case, 
+• test_case_message ids, 
+• protocol_msg_tags_id
+• USER ENTERED VALUES the actual values entered for every protocol_msg_tags_id can be obtained from this table. 
+• This coupled with protocol_msg_tags and protocol_all_tags will provide all tag informatoin for anhy single message in the testcase. 
+
+test_case_msgs_id  - 
+testcaseid, 
+entity id (protocol connection configuration), 
+protocol_id (protocol type of that message), 
+protocol_msg_id (message type within  a protocol)
+
+protocol_msg_tags_id - contains mapping between
+protocol_msg_id 
+protocoal_all_tags_id 
+• provides offset within the message, default value, possible_values and sequence # (probably redundant)
+• We would probably use the protocol_all_tags_id from this table to get to real information about tags
+protocol_all_tags_di 
+• provides length of the tag
+• provides destination type of the tag
+• provides justify rules 
+• provides tag_type i.e. header, body or trailer

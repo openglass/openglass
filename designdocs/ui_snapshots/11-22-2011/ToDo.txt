@@ -1,0 +1,2 @@
+-> All checkboxes should come to the left.
+->Results to be shown in a different window for every row (testcase/suite/project)

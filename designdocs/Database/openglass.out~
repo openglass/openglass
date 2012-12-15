@@ -1,0 +1,15 @@
+/usr/bin/pg_restore -v -C -d openglass -U Admin ~/Downloads/Openglass.backup
+
+
+Needed to recompile the whole source again !!!!
+http://www.postgresql.org/docs/9.1/static/install-getsource.html
+1. downlopaded the tar file
+2. ran configure.. failed on readline.. 
+3. installed yum install readline-static.x86_64 (installed ncurses as dependency automatically)
+4. now on zlib!!!
+5. yum install zlib-static.x86_64
+6 again configure
+7. Installed.
+
+To start postgres sql:
+service postgresql-9.1 start
