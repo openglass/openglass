@@ -1,0 +1,61 @@
+openGlass
+{
+    slogger
+    {
+        logFile=sopeng.log
+    }
+    logger
+    {
+        logFile=openg.log
+    }
+
+    rmi
+    {
+        multiServer
+        {
+            noOfThreads=1
+            port=7777
+            connDetails 
+            {
+                recvLength=1024
+            }
+        }
+        client
+        {
+            noOfThreads=1
+            ip=127.0.0.1
+            port=7778
+            connDetails 
+            {
+                recvLength=1024
+            }
+        }
+        cpacketizer
+        {
+            hdrLength=4
+        }
+    }
+
+    tcpIterServer
+    {
+        noOfThreads=1
+        port=7777
+        connDetails 
+        {
+            recvLength=1024
+        }
+    }
+    tcpClient
+    {
+        ip=127.0.0.1
+        port=7777
+        connDetails 
+        {
+            recvLength=1024
+        }
+    }
+    cpacketizer
+    {
+        hdrLength=4
+    }
+}

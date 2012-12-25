@@ -1,0 +1,11 @@
+the client will connect
+onConnect will be raised
+onDisconnect will be raised if disconnects
+onData will be raised as soon as we receive the data
+send method will do the needful
+recv method will do the needful
+onSend ??
+onRecv absolutely ??
+single client expected meaning it should not go back to startAccept until a
+disconnnect or exception has occured
+heartbeat for ensuring connection is lve??

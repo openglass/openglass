@@ -1,0 +1,1 @@
+response{ requestid=1 method=getTags nor=10  resultset{ result=("arca" "100" "hello") result2=("arca" "102" "hello")}}

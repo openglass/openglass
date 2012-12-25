@@ -1,0 +1,20 @@
+openGlass
+{
+    rmi
+    {
+        client
+        {
+            noOfThreads=1
+            ip=127.0.0.1
+            port=7777
+            connDetails 
+            {
+                recvLength=1024
+            }
+        }
+        cpacketizer
+        {
+            hdrLength=4
+        }
+    }
+}

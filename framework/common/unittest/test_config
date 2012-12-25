@@ -1,0 +1,13 @@
+openGlass
+{
+    logfile=openglass.log
+    noofthreads=24
+    serverDetails
+    {
+        comm=tcp
+        ip=127.0.0.1
+        port=54000
+    }
+    loglevels=( 1 2 3 4 5 )
+    logLvlString=( "error" "warn" "info" "debug")
+}

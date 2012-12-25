@@ -1,5 +1,5 @@
 openglass
 =========
 
-Financial Data Simulartor
+Financial Data Simulator
 See documents in designdocs. 
