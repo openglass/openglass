@@ -1,0 +1,13 @@
+include ../../mk/fog.mk
+
+USER_LIBS=
+
+SRCS	= 	main_yaml.cpp
+			
+all: yaml_test
+
+yaml_test: main_yaml.o
+		$(CC) $(CXXFLAGS) $(LDFLAGS) main_yaml.o $(LIBS) -o $@
+
+clean: 
+		$(RM) *.o yaml_test

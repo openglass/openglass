@@ -1,4 +1,4 @@
-BOOST_VERSION=boost_1_49_0
+BOOST_VERSION?=boost_1_49_0
 
 INCLUDE_BOOST=-I/appl/third_party/$(BOOST_VERSION)
 LIBS_BOOST=-L/appl/third_party/$(BOOST_VERSION)/lib
@@ -15,4 +15,16 @@ LIBS_PQXX= /appl/third_party/pqxx-4.0/lib/libpqxx.a /appl/third_party/pgsql-9.1/
 
 THIRD_PARTY_INCLUDE+=$(INCLUDE_PQXX)
 THIRD_PARTY_LIBS+=$(LIBS_PQXX)
+
+INCLUDE_YAML=-I/appl/third_party/yaml/yaml-cpp-0.5.1/include
+LIBS_YAML=-L/appl/third_party/yaml/yaml-cpp-0.5.1/build
+
+THIRD_PARTY_INCLUDE+=$(INCLUDE_YAML)
+THIRD_PARTY_LIBS+=$(LIBS_YAML)
+
+INCLUDE_GTEST=-I/appl/third_party/gtest/gtest-1.7.0/include
+LIBS_GTEST=-L/appl/third_party/gtest/gtest-1.7.0/mybuild -lyaml-cpp
+
+THIRD_PARTY_INCLUDE+=$(INCLUDE_GTEST)
+THIRD_PARTY_LIBS+=$(LIBS_GTEST)
 

@@ -1,0 +1,13 @@
+# if below mentioned includes are not present then the config
+# will be used for parsers in general
+include: 
+    - machine_config
+    - parser_config
+
+company:
+ engineering:
+  john: sr_software
+  jane: principal
+ executives:
+  harry: ceo
+  paul: cto
