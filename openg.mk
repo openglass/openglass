@@ -1,4 +1,5 @@
 include /appl/framework/mk/fog.mk
+# will include all framework
 
 OPENG_MAKE_ROOT=/appl/openglass
 OPENG_LIB_DIR=/appl/openglass/lib
