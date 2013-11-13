@@ -1,9 +1,9 @@
-include /appl/framework/mk/fog.mk
+TOP := $(dir $(lastword $(MAKEFILE_LIST)))
+include $(TOP)/framework/mk/fog.mk
 
-OPENG_MAKE_ROOT=/appl/openglass
-OPENG_LIB_DIR=/appl/openglass/lib
+OPENG_LIB_DIR=$(TOP)/lib
 
-INCLUDE += -I$(OPENG_MAKE_ROOT)
+INCLUDE += -I$(TOP) 
 LIBS_PATH := -L$(OPENG_LIB_DIR)
 DS_LIBS  :=  -ldatasource
 LIBS     :=  $(LIBS_PATH) $(DS_LIBS) $(LIBS)

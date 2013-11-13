@@ -1,4 +1,4 @@
-include /appl/openglass/openg.mk
+include ../openg.mk
 
 USER_LIBS = -lboost_system -lboost_thread -lboost_signals
 
