@@ -2,6 +2,8 @@ SUBDIRS = framework datasource model
 
 .PHONY: subdirs $(SUBDIRS)
 
+all: subdirs
+
 subdirs: $(SUBDIRS)
 
 $(SUBDIRS): 

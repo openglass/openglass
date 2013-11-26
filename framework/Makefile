@@ -2,6 +2,8 @@ SUBDIRS = common network
 
 .PHONY: subdirs $(SUBDIRS)
 
+all: subdirs
+
 subdirs: $(SUBDIRS)
 
 $(SUBDIRS): 
